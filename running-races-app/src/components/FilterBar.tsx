@@ -1,6 +1,7 @@
 import type { Distance, RaceStatus } from '../data/races';
 import type { SortOption } from '../App';
 import { STATUSES } from '../data/races';
+import DateRangeSlider from './DateRangeSlider';
 
 interface Props {
   distances: Distance[];
@@ -13,6 +14,8 @@ interface Props {
   onSelectCountry: (c: string) => void;
   sortBy: SortOption;
   onSortChange: (s: SortOption) => void;
+  dateRange: [number, number];
+  onDateRangeChange: (range: [number, number]) => void;
   hasActiveFilters: boolean;
   onClearFilters: () => void;
 }
@@ -66,6 +69,8 @@ export default function FilterBar({
   onSelectCountry,
   sortBy,
   onSortChange,
+  dateRange,
+  onDateRangeChange,
   hasActiveFilters,
   onClearFilters,
 }: Props) {
@@ -89,6 +94,14 @@ export default function FilterBar({
               </button>
             );
           })}
+        </div>
+      </div>
+
+      {/* Date range slider */}
+      <div>
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Date Range</p>
+        <div className="px-1 pb-2">
+          <DateRangeSlider value={dateRange} onChange={onDateRangeChange} />
         </div>
       </div>
 

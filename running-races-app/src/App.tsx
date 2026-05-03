@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { races, DISTANCES, type Distance, type RaceStatus } from './data/races';
+import { SLIDER_MONTHS } from './components/DateRangeSlider';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import FilterBar from './components/FilterBar';
@@ -8,18 +9,34 @@ import StatsBar from './components/StatsBar';
 
 export type SortOption = 'date-asc' | 'date-desc' | 'name' | 'participants';
 
+function addMonths(base: Date, months: number): Date {
+  const d = new Date(base);
+  d.setMonth(d.getMonth() + months);
+  return d;
+}
+
+const TODAY = (() => {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d;
+})();
+
 export default function App() {
   const [search, setSearch] = useState('');
   const [selectedDistances, setSelectedDistances] = useState<Distance[]>([]);
   const [selectedStatuses, setSelectedStatuses] = useState<RaceStatus[]>([]);
   const [selectedCountry, setSelectedCountry] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('date-asc');
+  const [dateRange, setDateRange] = useState<[number, number]>([0, SLIDER_MONTHS]);
 
   const countries = useMemo(() => {
     return [...new Set(races.map((r) => r.country))].sort();
   }, []);
 
   const filtered = useMemo(() => {
+    const rangeStart = addMonths(TODAY, dateRange[0]).toISOString().slice(0, 10);
+    const rangeEnd = addMonths(TODAY, dateRange[1]).toISOString().slice(0, 10);
+
     let result = races.filter((race) => {
       const q = search.toLowerCase();
       if (
@@ -35,6 +52,7 @@ export default function App() {
       if (selectedDistances.length > 0 && !selectedDistances.includes(race.distance)) return false;
       if (selectedStatuses.length > 0 && !selectedStatuses.includes(race.status)) return false;
       if (selectedCountry && race.country !== selectedCountry) return false;
+      if (race.date < rangeStart || race.date > rangeEnd) return false;
       return true;
     });
 
@@ -47,7 +65,7 @@ export default function App() {
         default: return 0;
       }
     });
-  }, [search, selectedDistances, selectedStatuses, selectedCountry, sortBy]);
+  }, [search, selectedDistances, selectedStatuses, selectedCountry, sortBy, dateRange]);
 
   function toggleDistance(d: Distance) {
     setSelectedDistances((prev) => prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d]);
@@ -63,9 +81,16 @@ export default function App() {
     setSelectedStatuses([]);
     setSelectedCountry('');
     setSortBy('date-asc');
+    setDateRange([0, SLIDER_MONTHS]);
   }
 
-  const hasActiveFilters = search !== '' || selectedDistances.length > 0 || selectedStatuses.length > 0 || selectedCountry !== '';
+  const hasActiveFilters =
+    search !== '' ||
+    selectedDistances.length > 0 ||
+    selectedStatuses.length > 0 ||
+    selectedCountry !== '' ||
+    dateRange[0] > 0 ||
+    dateRange[1] < SLIDER_MONTHS;
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100">
@@ -85,6 +110,8 @@ export default function App() {
             onSelectCountry={setSelectedCountry}
             sortBy={sortBy}
             onSortChange={setSortBy}
+            dateRange={dateRange}
+            onDateRangeChange={setDateRange}
             hasActiveFilters={hasActiveFilters}
             onClearFilters={clearFilters}
           />

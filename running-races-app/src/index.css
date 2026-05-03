@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+/* Dual range slider — both inputs stack on top of each other.
+   pointer-events: none on the element itself means only the thumb
+   captures clicks, so z-index swapping handles overlapping thumbs. */
+.dual-range-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  pointer-events: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dual-range-input::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 100%;
+}
+
+.dual-range-input::-moz-range-track {
+  background: transparent;
+}
+
+.dual-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: all;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f97316;
+  border: 2px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  margin-top: calc(50% - 9px);
+  transition: background 0.15s, transform 0.1s;
+}
+
+.dual-range-input::-moz-range-thumb {
+  pointer-events: all;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f97316;
+  border: 2px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  transition: background 0.15s, transform 0.1s;
+}
+
+.dual-range-input:active::-webkit-slider-thumb {
+  background: #ea580c;
+  transform: scale(1.15);
+}
+
+.dual-range-input:active::-moz-range-thumb {
+  background: #ea580c;
+  transform: scale(1.15);
+}
+
+.dual-range-input:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
