@@ -8,3 +8,13 @@ https://www.newcastle-hospitals.nhs.uk/resources/ivf-and-icsi-information-for-pa
 https://www.pfcla.com/blog/in-vitro-fertilization-ivf
 https://www.illumefertility.com/fertility-blog/ivf-dos-and-donts
 https://astrafertility.com/patient-guide/ivf-patients-instruction/
+
+# --- Status note (added by Claude, 2026-07-09) ---
+# The 5 links above could not be fetched automatically: this secure build
+# environment blocks outbound web access, so the pages returned "403 / blocked".
+# This is an environment limit, not a problem with your links.
+# The two uploaded PDFs (ESHRE 2025 guideline + protocols handbook) WERE read
+# successfully and are grounding the knowledge base.
+# To include these web pages: either (a) save each page as a PDF and upload it
+# to this folder like the others, or (b) paste the key text into a .txt file
+# here. Then tell Claude to fold them into kb.json.

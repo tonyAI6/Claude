@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "name": "IVF Companion knowledge base",
+    "version": "0.1.0-prototype",
+    "updated": "2026-07-09",
+    "language": "en",
+    "disclaimer": "Educational information only. Not medical advice. Always follow your own clinic's instructions and prescription. This prototype content was drafted from general standard-of-care sources and the uploaded ESHRE Ovarian Stimulation Guideline (2025) and should be reviewed by a clinician before real-world use.",
+    "sources": [
+      "ESHRE Ovarian Stimulation for IVF/ICSI — Guideline, update 2025 (uploaded PDF)",
+      "Handbook of Current and Novel Protocols for the Treatment of Infertility — Dahan & Fatemi (eds.) (uploaded PDF)",
+      "General patient-education standard of care (to be replaced/verified with your clinic's own materials)"
+    ]
+  },
+  "escalation": {
+    "note": "If any of these appear in a user's message, the app should surface an urgent 'contact your clinic' banner regardless of the answer.",
+    "redFlags": [
+      "severe abdominal pain", "severe bloating", "rapid weight gain", "shortness of breath",
+      "can't breathe", "trouble breathing", "peeing very little", "not urinating", "dark urine",
+      "severe vomiting", "can't keep fluids down", "calf pain", "leg swelling", "chest pain",
+      "fainting", "heavy bleeding", "high fever", "severe headache", "vision changes",
+      "allergic reaction", "swelling of face", "swelling of throat"
+    ],
+    "message": "Some of what you described can be a sign of a problem that needs prompt medical attention (for example ovarian hyperstimulation syndrome, an infection, a blood clot, or an allergic reaction). Please contact your fertility clinic now, or if you feel very unwell or have trouble breathing, seek emergency care. I can share general information, but I can't assess an urgent symptom."
+  },
+  "entries": [
+    {
+      "id": "gonal-f-what",
+      "topic": "Gonal-F (follitropin alfa) — what it is",
+      "keywords": ["gonal", "gonal-f", "gonal f", "follitropin", "fsh", "150", "iu", "ui", "what is this for", "stimulation drug"],
+      "answer": "Gonal-F is a brand of follitropin alfa, a man-made form of follicle-stimulating hormone (FSH). In IVF it is one of the main 'stimulation' medications: FSH tells your ovaries to grow several follicles (the small fluid sacs that each contain an egg) at once, instead of the single egg a natural cycle usually produces. More mature follicles can mean more eggs collected at the egg-retrieval step.\n\nThe dose is measured in IU (international units) — you may see it written 'UI' in some languages, which means the same thing. A prescription like 'Gonal-F 150 IU' means 150 international units per day, usually as an evening subcutaneous (under-the-skin) injection, for roughly 8–12 days, with the exact number of days decided by your clinic based on your monitoring scans and blood tests.",
+      "followUps": ["How do I know I'm injecting the right dose?", "What are the side effects of Gonal-F?", "Why 150 IU and not another number?"]
+    },
+    {
+      "id": "gonal-f-dose-verify",
+      "topic": "Verifying the dose on a Gonal-F pen",
+      "keywords": ["right dose", "correct dose", "how do i know", "150", "dial", "pen", "injecting", "am i injecting", "verify", "double check", "amount"],
+      "answer": "Your dose is whatever your doctor prescribed — the app can't set or change a dose. What it CAN do is help you confirm the pen is delivering the number your clinic gave you. For a Gonal-F pre-filled pen:\n\n1. Wash your hands and check the pen isn't expired and the liquid is clear.\n2. Attach a new needle each time.\n3. Turn the dose dial until the number in the window matches your prescribed dose exactly — for a 150 IU prescription, the window should read 150.\n4. If your pen 'runs out' before reaching the full number, your clinic will have told you how to give the rest from a second pen; if they didn't, call them before injecting.\n5. Before injecting, some clinics ask you to do a small 'priming' drop to clear air — follow the specific leaflet for YOUR pen model, as brands differ.\n\nIf the number won't dial to your dose, the window looks wrong, or anything feels off, stop and phone your clinic's nurse line rather than guessing. A quick call is always the right move with injectable medication.",
+      "followUps": ["Where on my body do I inject?", "What if I injected the wrong amount?", "What time of day should I inject?"]
+    },
+    {
+      "id": "injection-site",
+      "topic": "Where and how to give a subcutaneous injection",
+      "keywords": ["where inject", "injection site", "how to inject", "belly", "stomach", "thigh", "subcutaneous", "needle", "afraid of needles", "technique"],
+      "answer": "Most IVF stimulation injections (like Gonal-F, Menopur, and antagonist drugs) are subcutaneous — into the fatty layer just under the skin, not into muscle. The usual spot is the lower abdomen, about 5 cm (two finger-widths) to either side of the belly button, avoiding the belly button itself. The upper outer thigh is an alternative.\n\nGeneral technique (always defer to your clinic's own demonstration):\n1. Clean the area with an alcohol wipe and let it dry.\n2. Gently pinch a fold of skin.\n3. Insert the needle at the angle your clinic showed you (often 90°, sometimes 45° for very slim patients).\n4. Press the plunger steadily until the dose is delivered, then wait a few seconds before withdrawing.\n5. Rotate sites day to day to reduce bruising and soreness.\n\nMild bruising, redness, or stinging is common and not usually a concern. Being nervous about needles is extremely common too — many clinics have a nurse who will walk you through the first one.",
+      "followUps": ["It bruised and is sore — is that normal?", "What time should I inject?", "Can my partner give the injection?"]
+    },
+    {
+      "id": "menopur",
+      "topic": "Menopur (menotropin / hMG)",
+      "keywords": ["menopur", "menotropin", "hmg", "human menopausal", "lh", "mixing", "reconstitute", "powder"],
+      "answer": "Menopur is a menotropin (also called hMG, human menopausal gonadotropin). It contains both FSH and LH activity, so it stimulates follicle growth like Gonal-F but adds LH-type action, which some protocols favour. It often comes as a powder plus a liquid that you mix (reconstitute) just before injecting, and it's given subcutaneously.\n\nBecause Menopur usually needs mixing, there are a few more steps than a ready-to-use pen, and clinics differ on how many powder vials go into one injection. Follow the exact mixing instructions your clinic gave you, and call them if the number of vials or the volume ever looks different from what you expected.",
+      "followUps": ["How do I mix Menopur?", "What's the difference between Menopur and Gonal-F?", "Can I take both in one cycle?"]
+    },
+    {
+      "id": "antagonist",
+      "topic": "GnRH antagonist (Cetrotide, Orgalutran/Ganirelix) — the 'stop ovulation' injection",
+      "keywords": ["cetrotide", "orgalutran", "ganirelix", "antagonist", "prevent ovulation", "stop ovulation", "cetrorelix", "premature"],
+      "answer": "GnRH antagonists such as Cetrotide (cetrorelix) or Orgalutran/Ganirelix are added partway through stimulation to stop your body from releasing the eggs too early (premature ovulation). If eggs ovulate before the retrieval, they can't be collected — the antagonist keeps them in place until the planned trigger and egg collection.\n\nIt's a small subcutaneous injection, often started around day 5–6 of stimulation or when your lead follicles reach a certain size, and continued daily until your trigger shot. Your clinic decides the exact start day from your scans. This is the standard 'antagonist protocol,' which the ESHRE 2025 guideline discusses as one of the common approaches.",
+      "followUps": ["What is the trigger shot?", "Why did they add this partway through?", "Do I keep taking Gonal-F at the same time?"]
+    },
+    {
+      "id": "trigger",
+      "topic": "The trigger shot (Ovidrel / hCG or a GnRH-agonist trigger)",
+      "keywords": ["trigger", "ovidrel", "hcg", "pregnyl", "lupron trigger", "final maturation", "36 hours", "timing", "one shot"],
+      "answer": "The 'trigger' is the injection that tells your eggs to finish maturing so they can be collected. It's given at a very precise time — egg retrieval is scheduled for roughly 34–36 hours later — so the exact clock time your clinic gives you matters a lot. Setting an alarm is a good idea.\n\nCommon triggers are hCG-based (for example Ovidrel or Pregnyl), which mimics the natural LH surge, or a GnRH-agonist trigger (for example a Lupron/leuprolide trigger), which is sometimes used to lower the risk of ovarian hyperstimulation syndrome (OHSS). Your clinic chooses based on your response and OHSS risk. If you miss or are late with the trigger time, phone your clinic immediately — this is one of the few truly time-critical steps.",
+      "followUps": ["What is OHSS?", "What happens on egg-collection day?", "What if I took the trigger late?"]
+    },
+    {
+      "id": "progesterone",
+      "topic": "Progesterone support after transfer",
+      "keywords": ["progesterone", "crinone", "cyclogest", "utrogestan", "endometrin", "luteal", "pessary", "suppository", "after transfer", "support"],
+      "answer": "After egg collection and embryo transfer, most protocols include progesterone to support the lining of the uterus (endometrium) so an embryo can implant and the early pregnancy can be sustained — this is called luteal phase support. It can come as vaginal gel, pessaries/suppositories (for example Crinone, Cyclogest, Utrogestan, Endometrin), or sometimes injections, and is usually continued for a couple of weeks up to several weeks into an early pregnancy, exactly as your clinic directs.\n\nDon't stop progesterone on your own, even if you have some spotting — bleeding on progesterone doesn't automatically mean the cycle has failed, and your clinic will tell you when it's safe to stop.",
+      "followUps": ["I'm spotting on progesterone — is that bad?", "What are the side effects of progesterone?", "When is my pregnancy test?"]
+    },
+    {
+      "id": "ohss",
+      "topic": "OHSS — ovarian hyperstimulation syndrome",
+      "keywords": ["ohss", "hyperstimulation", "bloating", "swollen ovaries", "fluid", "overstimulated", "too many follicles"],
+      "answer": "OHSS (ovarian hyperstimulation syndrome) is when the ovaries over-respond to the stimulation medication, become swollen, and can leak fluid into the abdomen. Mild bloating and tenderness after stimulation is common and usually settles. But OHSS exists on a spectrum, and the more serious form needs medical attention.\n\nContact your clinic promptly if you have: rapidly worsening bloating or abdominal pain, rapid weight gain (for example more than ~1 kg/day), noticeably reduced urination, nausea/vomiting that stops you keeping fluids down, or breathlessness. Modern protocols actively reduce OHSS risk — for instance using an antagonist protocol with a GnRH-agonist trigger and sometimes freezing all embryos for a later transfer. If you're worried, it's always appropriate to call.",
+      "followUps": ["What are the warning signs I should watch for?", "Can OHSS be prevented?", "Why did my clinic freeze all my embryos?"],
+      "urgentHint": true
+    },
+    {
+      "id": "cycle-stages",
+      "topic": "The stages of an IVF cycle",
+      "keywords": ["stages", "steps", "how does ivf work", "timeline", "process", "what happens", "overview", "phases"],
+      "answer": "A typical IVF/ICSI cycle has these stages, though your clinic's protocol may vary:\n1. Pre-treatment & baseline — tests, sometimes the pill or other prep, and a baseline scan.\n2. Ovarian stimulation — daily hormone injections (like Gonal-F or Menopur) for about 8–12 days to grow multiple follicles.\n3. Monitoring — scans and blood tests every few days to track follicle growth and adjust the dose.\n4. Preventing early ovulation — an antagonist injection (like Cetrotide) added partway through.\n5. Trigger shot — a precisely timed injection to mature the eggs.\n6. Egg collection (retrieval) — a short procedure under sedation, about 34–36 hours after the trigger.\n7. Fertilisation — eggs and sperm combined in the lab (ICSI injects a single sperm into each egg).\n8. Embryo development — embryos grown for a few days.\n9. Embryo transfer — one embryo (usually) placed into the uterus; extras may be frozen.\n10. Luteal support & the two-week wait — progesterone, then a pregnancy blood test.",
+      "followUps": ["How long does the whole cycle take?", "What is ICSI?", "What happens on egg-collection day?"]
+    },
+    {
+      "id": "monitoring",
+      "topic": "Monitoring scans and blood tests",
+      "keywords": ["monitoring", "scan", "ultrasound", "blood test", "estradiol", "oestradiol", "follicle tracking", "appointments", "how often"],
+      "answer": "During stimulation your clinic tracks how your ovaries are responding, usually with transvaginal ultrasound scans to count and measure follicles, and sometimes blood tests for hormones like oestradiol. This is how they decide whether to keep your dose the same, raise or lower it, when to start the antagonist, and when you're ready for the trigger.\n\nExpect several visits over the stimulation phase (often every 2–3 days near the end). Follicles are generally considered mature around 17–20 mm, but your clinic reads the whole picture, not one number. It's normal for the plan to change as they learn how you respond.",
+      "followUps": ["What size should my follicles be?", "Why did they change my dose?", "How many follicles is normal?"]
+    },
+    {
+      "id": "dos-donts",
+      "topic": "Everyday do's and don'ts during a cycle",
+      "keywords": ["dos and donts", "do's", "lifestyle", "exercise", "alcohol", "caffeine", "diet", "sex", "avoid", "can i", "allowed"],
+      "answer": "General lifestyle guidance during an IVF cycle (your clinic's specific advice always wins):\n- Take medications at the times prescribed; consistency matters more than perfection.\n- Alcohol and smoking: best avoided; smoking in particular is linked to poorer outcomes.\n- Caffeine: usually fine in moderation (many clinics suggest keeping it low).\n- Exercise: gentle movement is fine, but avoid high-impact or intense exercise once your ovaries are enlarged during stimulation, because of a small risk of ovarian torsion (twisting).\n- Sex: many clinics advise avoiding intercourse around the time the ovaries are enlarged and after egg collection — ask yours.\n- Eat normally and stay hydrated; there's no magical IVF diet, though a balanced diet is sensible.\n- Rest is fine, but strict bed rest after transfer is not required and isn't shown to help.",
+      "followUps": ["Can I exercise during stimulation?", "Is caffeine okay?", "Do I need bed rest after transfer?"]
+    },
+    {
+      "id": "missed-dose",
+      "topic": "If you miss or mistime an injection",
+      "keywords": ["missed", "forgot", "late", "wrong dose", "too much", "too little", "skipped", "mistake", "double dose"],
+      "answer": "First: don't panic, and don't try to 'fix' it by doubling up on your own. What to do depends on which medication and how late you are, so the safest step is to call your clinic's nurse line and tell them exactly what happened and when.\n\nSome rules of thumb clinics commonly give (but confirm with yours): a stimulation injection taken a few hours late is usually not a disaster; the trigger shot is the most time-sensitive and a missed/late trigger needs an immediate call; and if you think you injected the wrong amount, report it rather than guessing at a correction. Clinics deal with these situations routinely — they would much rather get your call than have you improvise.",
+      "followUps": ["I injected too little — what now?", "What if I forgot the trigger time?", "Can I take it as soon as I remember?"],
+      "urgentHint": true
+    },
+    {
+      "id": "storage",
+      "topic": "Storing your medications",
+      "keywords": ["storage", "fridge", "refrigerate", "travel", "temperature", "keep", "room temperature", "expiry"],
+      "answer": "Storage depends on the specific drug, so check each leaflet, but common points: many gonadotropins (like Gonal-F and Menopur) are kept refrigerated (about 2–8°C) before first use, and some can be at room temperature for a limited period once opened — the leaflet gives exact times. Don't freeze them, and keep them out of direct light.\n\nIf you're travelling, use an insulated cool bag with a cold pack (not directly touching the medication so it doesn't freeze), carry medications in hand luggage with a copy of your prescription, and ask your clinic for a travel letter if you're flying. If a medication was left out too long or got too warm/cold, ask your clinic before using it.",
+      "followUps": ["Can I fly with my injections?", "I left it out of the fridge — is it still okay?", "How long does an opened pen last?"]
+    },
+    {
+      "id": "emotions",
+      "topic": "The emotional side of IVF",
+      "keywords": ["stress", "anxious", "anxiety", "emotional", "scared", "overwhelmed", "sad", "depressed", "cope", "support", "mental health", "hormones mood"],
+      "answer": "It's completely normal to feel a lot during IVF — hope, anxiety, irritability, sadness, and the mood effects of the hormones themselves. The two-week wait after transfer is famously hard. None of this means you're not coping; it means you're human and going through something demanding.\n\nThings that help many people: telling a couple of trusted people so you're not carrying it alone, connecting with fertility support groups or counsellors (many clinics offer or can refer to fertility counselling), keeping some normal routines, and being gentle with yourself about productivity. If you feel persistently hopeless, can't function, or have thoughts of harming yourself, please reach out to your clinic or a mental-health professional promptly — support is available and you deserve it.",
+      "followUps": ["The two-week wait is hard — any tips?", "Are mood swings from the medication?", "Does my clinic offer counselling?"]
+    },
+    {
+      "id": "success-factors",
+      "topic": "What affects IVF success",
+      "keywords": ["success rate", "chances", "will it work", "odds", "age", "how likely", "probability", "factors"],
+      "answer": "IVF success depends on many things and varies a lot from person to person, so no app can predict your individual odds — your clinic can give you the most realistic estimate based on your specific situation. In general, the biggest single factor is the age of the person whose eggs are used, because egg quality and quantity decline with age. Other factors include the underlying cause of infertility, embryo quality, the uterine lining, sperm quality, and sometimes lifestyle factors.\n\nIt's also common for it to take more than one cycle, and a cycle that doesn't succeed still gives your clinic valuable information to adjust the next plan. If you want realistic numbers for your case, ask your clinic — they'll know your history.",
+      "followUps": ["How does age affect success?", "How many cycles might I need?", "What can I do to improve my chances?"]
+    },
+    {
+      "id": "disclaimer-scope",
+      "topic": "What this app can and can't do",
+      "keywords": ["what can you do", "are you a doctor", "medical advice", "reliable", "safe", "trust", "who made this", "disclaimer"],
+      "answer": "I'm an educational companion for people going through IVF. I can explain what your medications are for, walk through the stages of a cycle, describe common side effects, and help you prepare good questions for your clinic — in plain language, any time of day.\n\nWhat I can't do: I'm not a doctor and I can't diagnose you, prescribe or change a dose, or assess an urgent symptom. Your clinic knows your history, your scans, and your protocol — I don't. So for anything specific to your body or your treatment plan, and for anything that feels urgent, your clinic is always the right place. Think of me as a well-informed friend who helps you understand things and reminds you when to pick up the phone.",
+      "followUps": ["What symptoms mean I should call my clinic?", "Where does your information come from?", "Can you tell me my personal dose?"]
+    }
+  ]
+}

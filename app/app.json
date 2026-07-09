@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Mira — IVF Companion",
+    "slug": "mira-ivf-companion",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "scheme": "mira",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0f6e64"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.miraivf"
+    },
+    "android": {
+      "package": "com.example.miraivf"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

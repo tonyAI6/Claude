@@ -1,0 +1,422 @@
+<style>
+  :root {
+    --ground: #eef2ee;
+    --surface: #ffffff;
+    --surface-2: #f7f4f0;
+    --ink: #162624;
+    --ink-soft: #4c5c58;
+    --ink-faint: #7a8884;
+    --brand: #0f6e64;
+    --brand-deep: #0a4f48;
+    --brand-tint: #dcebe8;
+    --accent: #e0805a;
+    --accent-soft: #f7ddcf;
+    --line: rgba(22, 38, 36, 0.10);
+    --line-strong: rgba(22, 38, 36, 0.16);
+    --urgent: #b5462f;
+    --urgent-bg: #fbe6df;
+    --shadow: 0 18px 50px -20px rgba(10, 40, 36, 0.35);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --user-bubble: #0f6e64;
+    --user-ink: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0d1a19;
+      --surface: #14201f 0;
+      --surface: #152322;
+      --surface-2: #1b2c2a;
+      --ink: #e8efec;
+      --ink-soft: #a9b8b4;
+      --ink-faint: #7d8c88;
+      --brand: #48c8b6;
+      --brand-deep: #6fd8c8;
+      --brand-tint: #163a37;
+      --accent: #f0a57e;
+      --accent-soft: #3a2419;
+      --line: rgba(232, 239, 236, 0.12);
+      --line-strong: rgba(232, 239, 236, 0.20);
+      --urgent: #ff9d84;
+      --urgent-bg: #3a1c16;
+      --shadow: 0 20px 55px -22px rgba(0, 0, 0, 0.7);
+      --user-bubble: #0f6e64;
+      --user-ink: #f2fbf9;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #eef2ee; --surface: #ffffff; --surface-2: #f7f4f0;
+    --ink: #162624; --ink-soft: #4c5c58; --ink-faint: #7a8884;
+    --brand: #0f6e64; --brand-deep: #0a4f48; --brand-tint: #dcebe8;
+    --accent: #e0805a; --accent-soft: #f7ddcf;
+    --line: rgba(22,38,36,0.10); --line-strong: rgba(22,38,36,0.16);
+    --urgent: #b5462f; --urgent-bg: #fbe6df;
+    --shadow: 0 18px 50px -20px rgba(10,40,36,0.35);
+    --user-bubble: #0f6e64; --user-ink: #ffffff;
+  }
+  :root[data-theme="dark"] {
+    --ground: #0d1a19; --surface: #152322; --surface-2: #1b2c2a;
+    --ink: #e8efec; --ink-soft: #a9b8b4; --ink-faint: #7d8c88;
+    --brand: #48c8b6; --brand-deep: #6fd8c8; --brand-tint: #163a37;
+    --accent: #f0a57e; --accent-soft: #3a2419;
+    --line: rgba(232,239,236,0.12); --line-strong: rgba(232,239,236,0.20);
+    --urgent: #ff9d84; --urgent-bg: #3a1c16;
+    --shadow: 0 20px 55px -22px rgba(0,0,0,0.7);
+    --user-bubble: #0f6e64; --user-ink: #f2fbf9;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .page {
+    background:
+      radial-gradient(120% 90% at 50% -10%, var(--brand-tint) 0%, transparent 55%),
+      var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    min-height: 100vh;
+    padding: clamp(16px, 4vw, 48px) clamp(14px, 4vw, 32px) 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(20px, 4vw, 34px);
+  }
+
+  .intro { max-width: 560px; text-align: center; display: flex; flex-direction: column; gap: 10px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--brand); font-weight: 600;
+  }
+  .intro h1 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(26px, 6vw, 38px); line-height: 1.15; margin: 0;
+    text-wrap: balance; letter-spacing: -0.01em;
+  }
+  .intro p { margin: 0; color: var(--ink-soft); font-size: 15.5px; text-wrap: pretty; }
+
+  /* Phone */
+  .device {
+    width: 100%; max-width: 400px;
+    background: var(--surface);
+    border-radius: 40px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    padding: 12px;
+    position: relative;
+  }
+  .device::before {
+    content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    width: 96px; height: 6px; border-radius: 99px; background: var(--line-strong);
+  }
+  .screen {
+    background: var(--surface-2);
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    height: min(74vh, 660px);
+    min-height: 520px;
+  }
+
+  /* App header with avatar */
+  .app-head {
+    display: flex; align-items: center; gap: 12px;
+    padding: 30px 18px 14px;
+    background: linear-gradient(180deg, var(--brand-tint), transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .avatar {
+    width: 46px; height: 46px; flex: none; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ffffff33, transparent 60%), linear-gradient(150deg, var(--brand), var(--brand-deep));
+    display: grid; place-items: center; box-shadow: 0 4px 12px -4px var(--brand-deep);
+  }
+  .avatar svg { width: 30px; height: 30px; display: block; }
+  .breathe { animation: breathe 4.5s ease-in-out infinite; transform-origin: center; }
+  @keyframes breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  .app-head .who { display: flex; flex-direction: column; line-height: 1.25; }
+  .app-head .name { font-family: var(--serif); font-weight: 600; font-size: 18px; }
+  .app-head .status { font-size: 12px; color: var(--brand-deep); display: flex; align-items: center; gap: 5px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #35b37e; box-shadow: 0 0 0 3px #35b37e22; }
+
+  /* Chat log */
+  .log {
+    flex: 1; overflow-y: auto; padding: 18px 16px 8px;
+    display: flex; flex-direction: column; gap: 14px;
+    scroll-behavior: smooth;
+  }
+  .msg { max-width: 85%; display: flex; flex-direction: column; gap: 6px; }
+  .msg.bot { align-self: flex-start; }
+  .msg.user { align-self: flex-end; align-items: flex-end; }
+  .bubble {
+    padding: 11px 14px; border-radius: 18px; font-size: 15px;
+    white-space: pre-wrap; word-wrap: break-word;
+  }
+  .bot .bubble {
+    background: var(--surface); color: var(--ink);
+    border: 1px solid var(--line); border-bottom-left-radius: 6px;
+    font-family: var(--serif); font-size: 15.5px; line-height: 1.5;
+  }
+  .user .bubble {
+    background: var(--user-bubble); color: var(--user-ink);
+    border-bottom-right-radius: 6px;
+  }
+  .source {
+    font-size: 11px; color: var(--ink-faint); display: flex; align-items: center; gap: 5px;
+    padding-left: 4px;
+  }
+  .source::before { content: "📖"; font-size: 10px; }
+
+  .urgent {
+    align-self: stretch; max-width: 100%;
+    background: var(--urgent-bg); color: var(--urgent);
+    border: 1px solid var(--urgent); border-radius: 14px;
+    padding: 12px 14px; font-size: 13.5px; font-weight: 500;
+    display: flex; gap: 9px; align-items: flex-start;
+  }
+  .urgent strong { display: block; margin-bottom: 3px; }
+
+  /* Typing indicator */
+  .typing { display: inline-flex; gap: 4px; padding: 14px 16px; }
+  .typing span {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint);
+    animation: blink 1.4s infinite both;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+
+  /* Chips */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 4px 2px; }
+  .chip {
+    font-family: var(--sans); font-size: 13px; color: var(--brand-deep);
+    background: var(--surface); border: 1px solid var(--line-strong);
+    padding: 8px 12px; border-radius: 999px; cursor: pointer;
+    transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+    text-align: left;
+  }
+  .chip:hover { background: var(--brand-tint); border-color: var(--brand); transform: translateY(-1px); }
+  .chip:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+  /* Composer */
+  .composer {
+    border-top: 1px solid var(--line); padding: 12px;
+    display: flex; gap: 8px; background: var(--surface);
+  }
+  .composer input {
+    flex: 1; border: 1px solid var(--line-strong); background: var(--surface-2);
+    border-radius: 999px; padding: 12px 16px; font-size: 15px; color: var(--ink);
+    font-family: var(--sans);
+  }
+  .composer input:focus-visible { outline: 2px solid var(--brand); outline-offset: 1px; }
+  .composer input::placeholder { color: var(--ink-faint); }
+  .send {
+    flex: none; width: 46px; height: 46px; border-radius: 50%; border: none;
+    background: var(--brand); color: #fff; cursor: pointer; display: grid; place-items: center;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+  .send:hover { background: var(--brand-deep); }
+  .send:active { transform: scale(0.94); }
+  .send:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .send svg { width: 20px; height: 20px; }
+
+  .disclaimer {
+    font-size: 11px; color: var(--ink-faint); text-align: center;
+    padding: 8px 16px 12px; background: var(--surface); line-height: 1.4;
+  }
+
+  /* Explainer below phone */
+  .notes { max-width: 560px; width: 100%; display: flex; flex-direction: column; gap: 14px; }
+  .note-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    padding: 16px 18px; display: flex; gap: 13px; align-items: flex-start;
+  }
+  .note-card .tag {
+    font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--accent);
+    flex: none; width: 26px; text-align: center;
+  }
+  .note-card h3 { margin: 0 0 3px; font-size: 15px; }
+  .note-card p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+  .footnote { max-width: 560px; text-align: center; font-size: 12.5px; color: var(--ink-faint); }
+  .footnote code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11.5px; background: var(--surface-2); padding: 1px 5px; border-radius: 5px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+
+<div class="page">
+  <header class="intro">
+    <div class="eyebrow">Working prototype &middot; Mira, your IVF companion</div>
+    <h1>A calm place to ask anything about your IVF journey</h1>
+    <p>This is a live demo of the app running in your browser. Tap a question or type your own — Mira answers from a real, curated knowledge base built from your uploaded sources. Try it on your phone.</p>
+  </header>
+
+  <div class="device" role="img" aria-label="Phone showing the IVF companion app">
+    <div class="screen">
+      <div class="app-head">
+        <div class="avatar" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <g class="breathe">
+              <circle cx="20" cy="16" r="7.5" fill="#fff" opacity="0.95"/>
+              <path d="M8 33c0-6.6 5.4-11 12-11s12 4.4 12 11" fill="#fff" opacity="0.95"/>
+              <circle cx="17" cy="15.5" r="1.3" fill="#0a4f48"/>
+              <circle cx="23" cy="15.5" r="1.3" fill="#0a4f48"/>
+              <path d="M17 18.7c1.8 1.4 4.2 1.4 6 0" stroke="#0a4f48" stroke-width="1.4" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+        <div class="who">
+          <span class="name">Mira</span>
+          <span class="status"><span class="dot" aria-hidden="true"></span> Here for you, any time</span>
+        </div>
+      </div>
+
+      <div class="log" id="log" aria-live="polite"></div>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <label for="q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Ask Mira a question</label>
+        <input id="q" name="q" placeholder="Ask anything about IVF…" />
+        <button class="send" type="submit" aria-label="Send">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l15-7-4 7 4 7z" fill="currentColor"/></svg>
+        </button>
+      </form>
+      <div class="disclaimer">Mira shares general education, not medical advice. Always follow your clinic's instructions.</div>
+    </div>
+  </div>
+
+  <section class="notes">
+    <div class="note-card">
+      <span class="tag">1</span>
+      <div><h3>It really answers from your sources</h3><p>Every reply is drawn from the knowledge base in your repo — including the ESHRE 2025 guideline you uploaded. Each answer shows where it came from.</p></div>
+    </div>
+    <div class="note-card">
+      <span class="tag">2</span>
+      <div><h3>It knows when to say "call your clinic"</h3><p>Type something like <em>"I have severe bloating and can't breathe"</em> and Mira raises an urgent banner instead of guessing. Safety first, always.</p></div>
+    </div>
+    <div class="note-card">
+      <span class="tag">3</span>
+      <div><h3>This is the feel, not the final app</h3><p>The real iOS/Android app uses the same design and knowledge base, but with the full Claude AI answering live. That version is being scaffolded in your repo now.</p></div>
+    </div>
+  </section>
+
+  <p class="footnote">Prototype v0.1 &middot; knowledge base: <code>knowledge-base/kb.json</code> &middot; not a medical device</p>
+</div>
+
+<script>
+const KB = {
+  escalation: {
+    redFlags: ["severe abdominal pain","severe bloating","rapid weight gain","shortness of breath","can't breathe","cant breathe","trouble breathing","peeing very little","not urinating","dark urine","severe vomiting","can't keep fluids","cant keep fluids","calf pain","leg swelling","chest pain","fainting","heavy bleeding","high fever","severe headache","vision changes","allergic reaction","swelling of face","swelling of throat","can not breathe"],
+    message: "Some of what you described can be a sign of a problem that needs prompt attention — for example ovarian hyperstimulation syndrome (OHSS), an infection, a blood clot, or an allergic reaction. Please contact your fertility clinic now. If you feel very unwell or have trouble breathing, seek emergency care."
+  },
+  entries: [
+    {t:"Gonal-F (follitropin alfa)", k:["gonal","gonal-f","gonal f","global f","follitropin","fsh","150","iu","ui","what is this for","what is this","stimulation drug","prescribed"], src:"Standard of care + ESHRE 2025", a:"Gonal-F is a brand of follitropin alfa — a man-made form of follicle-stimulating hormone (FSH). In IVF it's one of the main “stimulation” medicines: FSH tells your ovaries to grow several follicles (the little fluid sacs that each hold an egg) at once, instead of the single egg a natural cycle makes. More mature follicles can mean more eggs collected.\n\nThe dose is in IU (international units) — sometimes written “UI.” So “Gonal-F 150 IU” means 150 units a day, usually an evening injection under the skin, for about 8–12 days. Your clinic sets exactly how many days from your scans.", f:["How do I know I'm injecting the right dose?","What are the side effects?","What is the trigger shot?"]},
+    {t:"Verifying your dose", k:["right dose","correct dose","how do i know","injecting the right","am i injecting","dial","pen","verify","double check","how much","150 correct"], src:"Standard of care", a:"Your dose is whatever your doctor prescribed — I can't set or change it. But I can help you confirm the pen is delivering that number. For a Gonal-F pre-filled pen:\n\n1. Wash hands; check the pen isn't expired and the liquid is clear.\n2. Attach a fresh needle.\n3. Turn the dose dial until the window reads your exact dose — for 150 IU it should show 150.\n4. If the pen runs out before the full number, your clinic will have told you how to finish from a second pen — if they didn't, call before injecting.\n\nIf the number won't dial, or anything looks off, stop and phone your clinic's nurse line. A quick call is always the right move.", f:["Where do I inject?","What if I injected the wrong amount?","What time should I inject?"]},
+    {t:"Where & how to inject", k:["where inject","injection site","how to inject","belly","stomach","thigh","subcutaneous","needle","afraid of needles","technique","scared of needle"], src:"Standard of care", a:"Most IVF stimulation injections go subcutaneously — into the fatty layer just under the skin, not muscle. The usual spot is the lower tummy, about two finger-widths to either side of the belly button (avoid the button itself). The upper outer thigh works too.\n\nGeneral steps (follow your clinic's own demo): clean with an alcohol wipe and let it dry, gently pinch a fold of skin, insert at the angle they showed you, press the plunger steadily, wait a few seconds, then withdraw. Rotate sites daily to reduce bruising. A little bruising or stinging is normal, and being nervous is completely common — many clinics will guide your first one.", f:["It bruised and is sore — normal?","Can my partner inject it?","What time of day?"]},
+    {t:"Menopur", k:["menopur","menotropin","hmg","mixing","reconstitute","powder","mix"], src:"ESHRE 2025 + standard of care", a:"Menopur is a menotropin (hMG). It has both FSH and LH activity, so it grows follicles like Gonal-F but adds LH-type action that some protocols prefer. It usually comes as a powder plus liquid you mix just before injecting, given under the skin.\n\nBecause it needs mixing, there are a few more steps, and clinics differ on how many powder vials go into one injection. Follow your clinic's exact mixing instructions, and call them if the number of vials or the volume ever looks different from what you expected.", f:["What's the difference from Gonal-F?","How do I mix it?","Can I take both?"]},
+    {t:"Antagonist (Cetrotide / Orgalutran)", k:["cetrotide","orgalutran","ganirelix","antagonist","prevent ovulation","stop ovulation","cetrorelix","premature","early ovulation"], src:"ESHRE 2025", a:"GnRH antagonists like Cetrotide (cetrorelix) or Orgalutran/Ganirelix are added partway through stimulation to stop your body releasing the eggs too early. If eggs ovulate before retrieval, they can't be collected — the antagonist holds them until the planned trigger.\n\nIt's a small injection under the skin, often started around day 5–6 of stimulation or when your lead follicles reach a certain size, then continued daily until the trigger. Your clinic picks the exact start day from your scans. This is the standard “antagonist protocol.”", f:["What is the trigger shot?","Why add it partway through?","Do I keep taking Gonal-F too?"]},
+    {t:"The trigger shot", k:["trigger","ovidrel","hcg","pregnyl","lupron trigger","final maturation","36 hours","timing","one shot","trigger time"], src:"ESHRE 2025 + standard of care", a:"The “trigger” is the injection that tells your eggs to finish maturing so they can be collected. It's given at a very precise time — egg retrieval is booked for about 34–36 hours later — so the exact clock time your clinic gives you really matters. Set an alarm.\n\nCommon triggers are hCG-based (like Ovidrel or Pregnyl), or a GnRH-agonist trigger (like a Lupron trigger), sometimes used to lower OHSS risk. If you miss or are late with the trigger, phone your clinic immediately — it's one of the few truly time-critical steps.", f:["What is OHSS?","What happens on egg-collection day?","What if I took it late?"]},
+    {t:"Progesterone support", k:["progesterone","crinone","cyclogest","utrogestan","endometrin","luteal","pessary","suppository","after transfer","support"], src:"Standard of care", a:"After egg collection and embryo transfer, most protocols add progesterone to support the lining of the womb so an embryo can implant — this is “luteal phase support.” It can be a vaginal gel, pessaries (Crinone, Cyclogest, Utrogestan, Endometrin), or sometimes injections, continued for a couple of weeks up to several weeks into early pregnancy, exactly as your clinic directs.\n\nDon't stop it on your own, even with some spotting — bleeding on progesterone doesn't automatically mean the cycle failed. Your clinic tells you when it's safe to stop.", f:["I'm spotting — is that bad?","What are the side effects?","When is my pregnancy test?"]},
+    {t:"OHSS", k:["ohss","hyperstimulation","swollen ovaries","overstimulated","too many follicles","bloating"], src:"ESHRE 2025 + standard of care", urgent:true, a:"OHSS (ovarian hyperstimulation syndrome) is when the ovaries over-respond to stimulation, swell, and can leak fluid into the tummy. Mild bloating and tenderness after stimulation is common and usually settles. But OHSS is a spectrum, and the more serious form needs medical care.\n\nContact your clinic promptly if you have rapidly worsening bloating or pain, fast weight gain (e.g. more than ~1 kg a day), much less urination, vomiting that stops you keeping fluids down, or breathlessness. Modern protocols actively lower OHSS risk — for instance an antagonist protocol with an agonist trigger, and sometimes freezing all embryos for a later transfer.", f:["What warning signs should I watch for?","Can it be prevented?","Why freeze all my embryos?"]},
+    {t:"Stages of an IVF cycle", k:["stages","steps","how does ivf work","timeline","process","what happens","overview","phases","order"], src:"ESHRE 2025 + standard of care", a:"A typical IVF/ICSI cycle:\n1. Pre-treatment & baseline scan.\n2. Ovarian stimulation — daily injections (~8–12 days) to grow follicles.\n3. Monitoring — scans/bloods every few days to adjust the dose.\n4. Antagonist injection to prevent early ovulation.\n5. Trigger shot — precisely timed to mature the eggs.\n6. Egg collection — short procedure under sedation, ~34–36h after trigger.\n7. Fertilisation in the lab (ICSI injects one sperm per egg).\n8. Embryos grown a few days.\n9. Embryo transfer — usually one; extras may be frozen.\n10. Progesterone support, then the two-week wait and a pregnancy test.", f:["How long does it all take?","What is ICSI?","What happens on collection day?"]},
+    {t:"Monitoring scans & bloods", k:["monitoring","scan","ultrasound","blood test","estradiol","oestradiol","follicle tracking","appointments","how often","follicle size"], src:"ESHRE 2025", a:"During stimulation your clinic tracks how you're responding, usually with transvaginal ultrasound to count and measure follicles, and sometimes blood tests for hormones like oestradiol. That's how they decide whether to keep, raise or lower your dose, when to start the antagonist, and when you're ready to trigger.\n\nExpect several visits over the stimulation phase (often every 2–3 days near the end). Follicles are usually considered mature around 17–20 mm, but your clinic reads the whole picture, not one number. It's normal for the plan to shift as they learn how you respond.", f:["What size should follicles be?","Why did they change my dose?","How many follicles is normal?"]},
+    {t:"Do's and don'ts", k:["dos and donts","do's","lifestyle","exercise","alcohol","caffeine","diet","sex","avoid","can i","allowed","coffee"], src:"Standard of care", a:"General lifestyle guidance during a cycle (your clinic's advice always wins):\n• Take medicines at the times prescribed — consistency matters more than perfection.\n• Alcohol & smoking: best avoided; smoking especially is linked to poorer outcomes.\n• Caffeine: usually fine in moderation.\n• Exercise: gentle movement is fine, but avoid intense/high-impact exercise once ovaries are enlarged (small risk of ovarian torsion).\n• Sex: many clinics advise avoiding it around enlarged ovaries and after egg collection — ask yours.\n• Eat normally and hydrate; there's no magic IVF diet.\n• Strict bed rest after transfer is not needed and doesn't help.", f:["Can I exercise during stimulation?","Is caffeine okay?","Bed rest after transfer?"]},
+    {t:"Missed or mistimed injection", k:["missed","forgot","late","wrong dose","too much","too little","skipped","mistake","double dose","forgot to inject"], src:"Standard of care", urgent:true, a:"First: don't panic, and don't “fix” it by doubling up on your own. What to do depends on which medicine and how late you are, so the safest step is to call your clinic's nurse line and tell them exactly what happened and when.\n\nCommon rules of thumb (confirm with yours): a stimulation injection a few hours late is usually not a disaster; the trigger shot is the most time-sensitive and needs an immediate call; and if you think you injected the wrong amount, report it rather than guessing a correction. Clinics handle these all the time — they'd much rather get your call.", f:["I injected too little — now what?","I forgot the trigger time","Can I take it as soon as I remember?"]},
+    {t:"Storing your medicines", k:["storage","fridge","refrigerate","travel","temperature","keep","room temperature","expiry","flying","plane"], src:"Standard of care", a:"Storage depends on the specific drug — check each leaflet — but commonly: many gonadotropins (Gonal-F, Menopur) are kept refrigerated (~2–8°C) before first use, and some can sit at room temperature for a limited time once opened. Don't freeze them; keep them out of direct light.\n\nTravelling? Use an insulated cool bag with a cold pack (not touching the medicine, so it doesn't freeze), carry them in hand luggage with a copy of your prescription, and ask your clinic for a travel letter if flying. If a medicine got too warm or cold, ask your clinic before using it.", f:["Can I fly with my injections?","I left it out of the fridge — okay?","How long does an opened pen last?"]},
+    {t:"The emotional side", k:["stress","anxious","anxiety","emotional","scared","overwhelmed","sad","depressed","cope","support","mental health","mood","crying","hard"], src:"Standard of care", a:"It's completely normal to feel a lot during IVF — hope, anxiety, irritability, sadness, and the mood effects of the hormones themselves. The two-week wait is famously hard. None of this means you're not coping; it means you're human, going through something demanding.\n\nWhat helps many people: telling a couple of trusted people, connecting with fertility support groups or counsellors (many clinics can refer you), keeping some normal routine, and being gentle with yourself. If you feel persistently hopeless, can't function, or have thoughts of harming yourself, please reach out to your clinic or a mental-health professional promptly — you deserve support.", f:["Any tips for the two-week wait?","Are mood swings from the meds?","Does my clinic offer counselling?"]},
+    {t:"What affects success", k:["success rate","chances","will it work","odds","age","how likely","probability","factors","work"], src:"Standard of care", a:"IVF success depends on many things and varies a lot person to person, so no app can predict your individual odds — your clinic can give the most realistic estimate for your situation. In general the biggest single factor is the age of the person whose eggs are used, because egg quality and quantity decline with age. Other factors: the cause of infertility, embryo quality, the womb lining, and sperm quality.\n\nIt's also common to need more than one cycle, and a cycle that doesn't work still gives your clinic information to adjust the next plan. For realistic numbers, ask your clinic — they know your history.", f:["How does age affect it?","How many cycles might I need?","How can I improve my chances?"]},
+    {t:"What I can and can't do", k:["what can you do","are you a doctor","medical advice","reliable","safe","trust","who made this","disclaimer","real doctor"], src:"About Mira", a:"I'm an educational companion for people going through IVF. I can explain what your medicines are for, walk through the stages of a cycle, describe common side effects, and help you prepare good questions for your clinic — in plain language, any time.\n\nWhat I can't do: I'm not a doctor. I can't diagnose you, prescribe or change a dose, or assess an urgent symptom. Your clinic knows your history, your scans, and your protocol — I don't. So for anything specific to your body, and anything urgent, your clinic is always the right place. Think of me as a well-informed friend who helps you understand things and reminds you when to call.", f:["What symptoms mean I should call?","Where does your info come from?","Can you tell me my personal dose?"]}
+  ]
+};
+
+const STARTERS = [
+  "My doctor prescribed Gonal-F 150 IU — what is this for?",
+  "How do I know I'm injecting the right dose?",
+  "What is the trigger shot?",
+  "What is OHSS and what should I watch for?"
+];
+
+const log = document.getElementById('log');
+const form = document.getElementById('composer');
+const input = document.getElementById('q');
+
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+function esc(s){ return s.replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function scroll(){ log.scrollTop = log.scrollHeight; }
+
+function addUser(text){
+  const m = el('div','msg user'); m.appendChild(el('div','bubble', esc(text))); log.appendChild(m); scroll();
+}
+function addBot(entry){
+  const m = el('div','msg bot');
+  m.appendChild(el('div','bubble', esc(entry.a).replace(/\n/g,'<br>')));
+  if(entry.src) m.appendChild(el('div','source', 'Source: '+esc(entry.src)));
+  log.appendChild(m); scroll();
+  if(entry.f && entry.f.length){
+    const c = el('div','chips');
+    entry.f.forEach(q => { const b=el('button','chip', esc(q)); b.type='button'; b.onclick=()=>ask(q); c.appendChild(b); });
+    log.appendChild(c); scroll();
+  }
+}
+function addUrgent(msg){
+  const u = el('div','urgent');
+  u.innerHTML = '<span aria-hidden="true">⚠️</span><div><strong>Please contact your clinic</strong>'+esc(msg)+'</div>';
+  log.appendChild(u); scroll();
+}
+function typing(){
+  const m = el('div','msg bot'); m.id='typing';
+  const b = el('div','bubble typing'); b.innerHTML='<span></span><span></span><span></span>';
+  m.appendChild(b); log.appendChild(m); scroll(); return m;
+}
+
+function findEntry(q){
+  const s = q.toLowerCase();
+  let best=null, bestScore=0;
+  for(const e of KB.entries){
+    let score=0;
+    for(const kw of e.k){
+      if(s.includes(kw)) score += kw.includes(' ') ? 3 : (kw.length<=3 ? 1 : 2);
+    }
+    if(score>bestScore){ bestScore=score; best=e; }
+  }
+  return bestScore>=2 ? best : null;
+}
+function checkRedFlags(q){
+  const s = q.toLowerCase();
+  return KB.escalation.redFlags.some(f => s.includes(f));
+}
+
+const FALLBACK = {
+  a:"That's a great question, and I want to be honest: I don't have a confident answer for it in my current knowledge base, so I'd rather not guess about something that matters. The best person to ask is your fertility clinic's nurse line — they know your specific protocol.\n\nIn the full app I'll be able to answer far more, powered by live AI over your sources. In the meantime, try one of the topics below, or rephrase your question.",
+  src:"About Mira",
+  f:["What is Gonal-F for?","Stages of an IVF cycle","How do I inject?","What is OHSS?"]
+};
+
+let busy=false;
+function ask(text){
+  if(busy || !text.trim()) return;
+  busy=true;
+  addUser(text);
+  const urgent = checkRedFlags(text);
+  const t = typing();
+  setTimeout(()=>{
+    t.remove();
+    if(urgent) addUrgent(KB.escalation.message);
+    const entry = findEntry(text);
+    addBot(entry || FALLBACK);
+    busy=false;
+    input.focus();
+  }, 650 + Math.random()*450);
+}
+
+form.addEventListener('submit', e=>{ e.preventDefault(); const v=input.value; input.value=''; ask(v); });
+
+// Greeting
+(function(){
+  addBot({
+    a:"Hi, I'm Mira 👋 I'm here to help you understand your IVF journey — your medicines, your protocol, the steps, and the worries that pop up at 2am.\n\nAsk me anything, or tap one of these to start:",
+    src:"About Mira"
+  });
+  const c = el('div','chips');
+  STARTERS.forEach(q=>{ const b=el('button','chip', esc(q)); b.type='button'; b.onclick=()=>ask(q); c.appendChild(b); });
+  log.appendChild(c); scroll();
+})();
+</script>
